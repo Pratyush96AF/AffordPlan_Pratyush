@@ -17,13 +17,13 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-
+import java.util.Timer;
 
 
 @Component
 public class EventScheduler {
 
-    private static final Logger LOG = LoggerFactory.getLogger(EventScheduler.class);
+    private static final Logger LOG = LoggerFactory.getLogger(EventScheduler.class.getName());
 
     private static final String SUCCESS_CODE = "200 OK";
 
@@ -44,6 +44,12 @@ public class EventScheduler {
     @Value("${message.setTo}")
     private String setToEmail;
 
+    private int timeToExecute = 3;
+
+    private int SecondsToSend = 2000;
+
+
+
     public void sendEmail(String subject, String content) {
 
         LOG.info("Sending Email");
@@ -59,7 +65,9 @@ public class EventScheduler {
 
     }
 
-    @Scheduled(fixedRate = 60000)
+
+
+    @Scheduled(fixedRate = 1000)
     public void SchedulingMailingEvent() {
 
         LOG.info("Scheduling Event");
@@ -79,12 +87,27 @@ public class EventScheduler {
             Data bodyOne = g.fromJson(outOne.getBody(), Data.class);
             if (!(statusCodeOne.equals(SUCCESS_CODE)) || !(bodyOne.getData().getSuccess().equals(SUCCESS_MESSAGE))) {
                 LOG.error("server instance of kiwiplans down");
-                sendEmail("KiwiPlans server down", "server instance of kiwiplans down");
+               // sendEmail("KiwiPlans server down", "server instance of kiwiplans down");
             }
         }
         catch(Exception e){
+            System.out.println(timeToExecute);
+            while(timeToExecute>=0){
+                if(timeToExecute==0){
+                    SecondsToSend = SecondsToSend*5;
+                    timeToExecute=3;
+                }
+                new java.util.Timer().schedule(new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        System.out.println("running after"+SecondsToSend);
+                    }
+                }, SecondsToSend);
+
+            }
+
             LOG.error("server instance of kiwiplans down");
-            sendEmail("KiwiPlans server down", "server instance of kiwiplans down");
+            //sendEmail("KiwiPlans server down", "server instance of kiwiplans down");
         }
 
         ResponseEntity<String> outTwo ;
@@ -98,8 +121,22 @@ public class EventScheduler {
                 LOG.error("server instance of localhost with port 8080  down");
                 //sendEmail("localhost:8080 down", "server instance of localhost with port 8080  down");
             }
+
         }
         catch(Exception e){
+            System.out.println(timeToExecute);
+            while(timeToExecute>=0){
+
+                new java.util.Timer().schedule(new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        System.out.println("running after"+SecondsToSend);
+                    }
+                }, SecondsToSend);
+
+                timeToExecute--;
+
+            }
             LOG.error("server instance of localhost with port 8080  down");
             //sendEmail("localhost:8080 down", "server instance of localhost with port 8080  down");
         }
