@@ -1,0 +1,4 @@
+[2022-04-22 08:39:06,250] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 149 INFO   - Scheduling event for second uri
+[2022-04-22 08:39:06,379] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 171 ERROR  - server instance of localhost with port 8080  down
+[2022-04-22 08:39:06,380] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 75 INFO   - Sending Email
+[2022-04-22 09:11:19,460] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 79 INFO   - Scheduling Event for uri1
