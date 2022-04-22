@@ -92,6 +92,8 @@ public class MonitoringURIScheduler {
             if ((uriMap.get(uri1).getCounter()) < COUNTER_LIMIT) {
                 LOG.info("Server is Up for staging server");
                 uriPropertiesOne.setCounter(3);
+                uriPropertiesOne.setPhaseCounter(1);
+                uriPropertiesOne.setMaxCounter(1);
                 uriMap.put(uri1, uriPropertiesOne);
                 sendEmail("staging server is up","server instance of staging is up ");
                 LOG.info("Mail sent for staging  uri ");
@@ -144,6 +146,8 @@ public class MonitoringURIScheduler {
             if ((uriMap.get(uri2).getCounter()) < COUNTER_LIMIT) {
                 LOG.info("Server is Up with port 8080");
                 uriPropertiesTwo.setCounter(3);
+                uriPropertiesTwo.setPhaseCounter(1);
+                uriPropertiesTwo.setMaxCounter(1);
                 uriMap.put(uri2, uriPropertiesTwo);
                 sendEmail("localhost:8080 is up", "server instance of localhost with port 8080 up again ");
                 LOG.info("Mail Sent for second uri");
@@ -198,6 +202,8 @@ public class MonitoringURIScheduler {
             if ((uriMap.get(uri3).getCounter()) < COUNTER_LIMIT) {
                 LOG.info("Server is Up with port 9090");
                 uriPropertiesThree.setCounter(3);
+                uriPropertiesThree.setPhaseCounter(1);
+                uriPropertiesThree.setMaxCounter(1);
                 uriMap.put(uri3, uriPropertiesThree);
                 sendEmail("localhost:9090 is up","server instance of localhost with port 9090 up ");
                 LOG.info("Mail Sent for third uri");
