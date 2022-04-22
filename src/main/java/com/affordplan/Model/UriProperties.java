@@ -6,19 +6,13 @@ public class UriProperties {
 
     int counter;
 
-    int phaseCounter;
 
 
 
-    int maxCounter;
 
-
-
-    public UriProperties(String uri, int counter, int maxCounter,int phaseCounter){
+    public UriProperties(String uri, int counter){
         this.uri=uri;
         this.counter=counter;
-        this.maxCounter=maxCounter;
-        this.phaseCounter=phaseCounter;
 
     }
 
@@ -39,19 +33,4 @@ public class UriProperties {
         this.counter = counter;
     }
 
-    public int getMaxCounter() {
-        return maxCounter;
-    }
-
-    public void setMaxCounter(int maxCounter) {
-        this.maxCounter = maxCounter;
-    }
-
-    public int getPhaseCounter() {
-        return phaseCounter;
-    }
-
-    public void setPhaseCounter(int phaseCounter) {
-        this.phaseCounter = phaseCounter;
-    }
 }
