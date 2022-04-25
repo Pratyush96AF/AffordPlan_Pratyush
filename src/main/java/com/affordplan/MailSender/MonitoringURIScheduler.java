@@ -98,7 +98,7 @@ public class MonitoringURIScheduler {
             Gson g = new Gson();
             Data outputBody = g.fromJson(output.getBody(), Data.class);
 
-            if (!(statusCode.equals(SUCCESS_CODE))) {
+            if (!(statusCode.equals(SUCCESS_CODE)) || !(outputBody.getData().getSuccess().equals(SUCCESS_MESSAGE))) {
                 LOG.error("server instance of server " + uriproperties.getUri() + " down");
                 sendEmail("server " + uriproperties.getUri() + " down", "server instance of " + uriproperties.getUri() + " down");
                 LOG.info("Mail sent for uri " + uriproperties.getUri());
