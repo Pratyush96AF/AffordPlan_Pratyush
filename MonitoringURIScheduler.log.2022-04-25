@@ -1,0 +1,9 @@
+[2022-04-25 16:07:49,913] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 134 INFO   - Inside SchedulingMailingEventOne
+[2022-04-25 16:07:49,939] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 91 INFO   - Inside SchedulingMailingEvent for uri https://api.kiwiplans.com/update/propertyMap
+[2022-04-25 16:07:49,939] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 79 INFO   - Inside checkResponseStatus with url https://api.kiwiplans.com/update/propertyMap
+[2022-04-25 18:26:47,508] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 137 INFO   - Inside SchedulingMailingEventOne
+[2022-04-25 18:26:47,535] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 94 INFO   - Inside SchedulingMailingEvent for uri https://api.kiwiplans.com/update/propertyMap
+[2022-04-25 18:26:47,535] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 82 INFO   - Inside checkResponseStatus with url https://api.kiwiplans.com/update/propertyMap
+[2022-04-25 18:34:01,613] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 137 INFO   - Inside SchedulingMailingEventOne
+[2022-04-25 18:34:01,615] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 95 INFO   - Inside SchedulingMailingEvent for uri https://api.kiwiplans.com/update/propertyMap
+[2022-04-25 18:34:01,615] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 82 INFO   - Inside checkResponseStatus with url https://api.kiwiplans.com/update/propertyMap

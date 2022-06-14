@@ -35,6 +35,7 @@ public class MonitoringURIScheduler {
     UriProperties uriPropertiesThree;
     @Autowired
     private JavaMailSender javaMailSender;
+
     @Value("${uri.var1}")
     private String uri1;
     @Value("${uri.var2}")
@@ -43,6 +44,15 @@ public class MonitoringURIScheduler {
     private String uri3;
     @Value("${message.setTo}")
     private String setToEmail;
+
+
+
+    @Value("${Timer.time}")
+    private int time;
+
+    @Value("${ThreshHold.time}")
+    private int threshHold;
+
     private Map<String, UriProperties> uriMap;
 
     @PostConstruct
@@ -61,7 +71,7 @@ public class MonitoringURIScheduler {
     }
 
     public void sendEmail(String subject, String content) {
-        LOG.info("Inside Send Email");
+        LOG.debug("Inside Send Email");
         try {
             String[] emailRecipients = setToEmail.split(",");
             SimpleMailMessage msg = new SimpleMailMessage();
@@ -70,25 +80,40 @@ public class MonitoringURIScheduler {
             msg.setText(content);
             javaMailSender.send(msg);
         } catch (Exception e) {
-            LOG.error(e);
+            LOG.error("Error in sendEmail "+e);
         }
 
     }
 
     public ResponseEntity<String> checkResponseStatus(String url) {
-        LOG.info("Inside checkResponseStatus with url"+url);
+        LOG.debug("Inside checkResponseStatus with url "+url);
+       // log.logger(url,"insideCheckResponse");
         ResponseEntity<String> output;
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<Object> entity = new HttpEntity<Object>(headers);
+        long time = System.currentTimeMillis();
         output = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        long responseTime = (System.currentTimeMillis() - time);
+
+        if(responseTime>threshHold){
+
+            LOG.info("Response time for "+ url + "is long with response time "+responseTime);
+
+            sendEmail("server " + url + "slow response time", "server instance of " + url + " taking long response time");
+
+        }
+
+        LOG.info("Response time "+url+ "  "+responseTime);
+
+        LOG.info("Status code "+url+"  "+output);
 
         return output;
     }
 
     public void SchedulingMailingEvent(UriProperties uriproperties) {
-        LOG.info("Inside SchedulingMailingEvent for uri " + uriproperties.getUri());
+        LOG.debug("Inside SchedulingMailingEvent for uri " + uriproperties.getUri());
 
         ResponseEntity<String> output;
         int count;
@@ -98,7 +123,7 @@ public class MonitoringURIScheduler {
             Gson g = new Gson();
             Data outputBody = g.fromJson(output.getBody(), Data.class);
 
-            if (!(statusCode.equals(SUCCESS_CODE)) || !(outputBody.getData().getSuccess().equals(SUCCESS_MESSAGE))) {
+            if (!(statusCode.equals(SUCCESS_CODE)) && !(outputBody.getData().getSuccess().equals(SUCCESS_MESSAGE))) {
                 LOG.error("server instance of server " + uriproperties.getUri() + " down");
                 sendEmail("server " + uriproperties.getUri() + " down", "server instance of " + uriproperties.getUri() + " down");
                 LOG.info("Mail sent for uri " + uriproperties.getUri());
@@ -114,42 +139,50 @@ public class MonitoringURIScheduler {
 
 
         } catch (Exception e) {
-            LOG.error("server instance of " + uriproperties.getUri() + " down");
+            LOG.debug("Inside catch of SchedulingMailingEvent ");
+            LOG.error("server instance " + uriproperties.getUri() + " down");
              count = uriproperties.getCounter();
              count++;
             uriproperties.setCounter(count);
             if(uriproperties.getCounter()>0 && ((uriproperties.getCounter()<3 ) || (uriproperties.getCounter()%5==0))){
-                LOG.error("server instance of server " + uriproperties.getUri() + " down");
+                LOG.debug("Mail Sent condition satisfied ");
                 sendEmail("server " + uriproperties.getUri() + " down", "server instance of " + uriproperties.getUri() + " down");
-                LOG.info("Mail sent for uri " + uriproperties.getUri());
             }
 
         }
 
     }
 
-    @Scheduled(fixedRate = 120000)
+    @Scheduled(fixedRateString = "${Timer.time}")
     public void SchedulingMailingEventOne() {
-        LOG.info("Inside SchedulingMailingEventOne");
+        LOG.debug("Inside SchedulingMailingEventOne");
 
         SchedulingMailingEvent(uriPropertiesOne);
 
     }
 
-    @Scheduled(fixedRate = 120000)
+    @Scheduled(fixedRateString = "${Timer.time}")
     public void SchedulingMailingEventTwo() {
-        LOG.info("Inside SchedulingMailingEventTwo");
+        LOG.debug("Inside SchedulingMailingEventTwo");
 
         SchedulingMailingEvent(uriPropertiesTwo);
     }
 
 
-    @Scheduled(fixedRate = 120000)
+    @Scheduled(fixedRateString = "${Timer.time}")
     public void SchedulingMailingEventThree() {
-        LOG.info("Inside SchedulingEventThree");
+        LOG.debug("Inside SchedulingEventThree");
 
         SchedulingMailingEvent(uriPropertiesThree);
 
+    }
+
+    public static String createCSVFormatString(String inputStr) {
+        String outputStr = "";
+        if (inputStr != null) {
+            outputStr = inputStr.replace("\"", "\"\"");
+        }
+        return outputStr;
     }
 
 
