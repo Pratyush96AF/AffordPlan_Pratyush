@@ -1,24 +1,150 @@
-[2022-06-13 11:14:33,881] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 149 INFO   - Inside SchedulingMailingEventOne
-[2022-06-13 11:14:33,884] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 107 INFO   - Inside SchedulingMailingEvent for uri https://api.kiwiplans.com/update/propertyMap
-[2022-06-13 11:14:33,885] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 88 INFO   - Inside checkResponseStatus with url https://api.kiwiplans.com/update/propertyMap
-[2022-06-13 11:41:31,834] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 149 INFO   - Inside SchedulingMailingEventOne
-[2022-06-13 11:41:32,042] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 107 INFO   - Inside SchedulingMailingEvent for uri https://api.kiwiplans.com/update/propertyMap
-[2022-06-13 11:41:32,043] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 88 INFO   - Inside checkResponseStatus with url https://api.kiwiplans.com/update/propertyMap
-[2022-06-13 12:29:31,298] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 146 INFO   - Inside SchedulingMailingEventOne
-[2022-06-13 12:29:31,333] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 104 INFO   - Inside SchedulingMailingEvent for uri https://api.kiwiplans.com/update/propertyMap
-[2022-06-13 12:29:31,333] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 85 INFO   - Inside checkResponseStatus with url https://api.kiwiplans.com/update/propertyMap
-[2022-06-13 12:30:19,625] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 146 INFO   - Inside SchedulingMailingEventOne
-[2022-06-13 12:30:19,627] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 104 INFO   - Inside SchedulingMailingEvent for uri https://api.kiwiplans.com/update/propertyMap
-[2022-06-13 12:30:19,628] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 85 INFO   - Inside checkResponseStatus with url https://api.kiwiplans.com/update/propertyMap
-[2022-06-13 12:30:59,974] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 146 INFO   - Inside SchedulingMailingEventOne
-[2022-06-13 12:30:59,977] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 104 INFO   - Inside SchedulingMailingEvent for uri https://api.kiwiplans.com/update/propertyMap
-[2022-06-13 12:30:59,977] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 85 INFO   - Inside checkResponseStatus with url https://api.kiwiplans.com/update/propertyMap
-[2022-06-13 12:32:41,607] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 146 INFO   - Inside SchedulingMailingEventOne
-[2022-06-13 12:32:41,609] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 104 INFO   - Inside SchedulingMailingEvent for uri https://api.kiwiplans.com/update/propertyMap
-[2022-06-13 12:32:41,609] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 85 INFO   - Inside checkResponseStatus with url https://api.kiwiplans.com/update/propertyMap
-[2022-06-13 12:33:51,354] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 146 INFO   - Inside SchedulingMailingEventOne
-[2022-06-13 12:33:51,356] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 104 INFO   - Inside SchedulingMailingEvent for uri https://api.kiwiplans.com/update/propertyMap
-[2022-06-13 12:33:51,357] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 85 INFO   - Inside checkResponseStatus with url https://api.kiwiplans.com/update/propertyMap
-[2022-06-13 23:26:22,405] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 157 INFO   - Inside SchedulingMailingEventOne
-[2022-06-13 23:26:22,466] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 115 DEBUG  - Inside SchedulingMailingEvent for uri https://api.kiwiplans.com/update/propertyMap
-[2022-06-13 23:26:22,467] scheduling-1 com.affordplan.MailSender.MonitoringURIScheduler 89 DEBUG  - Inside checkResponseStatus with url https://api.kiwiplans.com/update/propertyMap
+Timestamp,Url,Response,ResponseTime,status,Response Body
+https://api.kiwiplans.com/update/propertyMap,200,921,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,223,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,103,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,43,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,76,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,47,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,44,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,41,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,40,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,41,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,44,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,43,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,38,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,40,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,39,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,42,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,46,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,41,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,42,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,41,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,208,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,45,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,43,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,45,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,44,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,52,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,46,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,42,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,44,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,64,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,54,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,45,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,45,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,39,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,43,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,44,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,44,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,43,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,43,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,43,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,44,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,55,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,44,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,69,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,47,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,44,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,48,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,41,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,43,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
+http://localhost:9090/update/propertyMap,,,down
+https://api.kiwiplans.com/update/propertyMap,200,43,up,{"data":{"success":"OperationSuccess"}}
+http://localhost:8080/update/propertyMap,,,down
