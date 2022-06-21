@@ -19,6 +19,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.HttpServerErrorException;
 
 import javax.annotation.PostConstruct;
 import java.sql.Timestamp;
@@ -90,7 +91,7 @@ public class MonitoringURIScheduler {
             msg.setText(content);
             javaMailSender.send(msg);
         } catch (Exception e) {
-            LOG.debug("sendEmail error ",Instant.now().toString(),"","","",e.getMessage());
+            LOG.debug("sendEmail error",java.time.LocalDateTime.now(),"","","",e.getMessage().toString());
         }
 
 
@@ -110,13 +111,13 @@ public class MonitoringURIScheduler {
 
         if(responseTime>threshHold){
 
-            LOG.info("",Instant.now().toString(),url,output.getStatusCodeValue(),responseTime);
+            LOG.info("",java.time.LocalDateTime.now(),url,output.getStatusCodeValue(),responseTime);
 
             sendEmail("server " + url + "slow response time", "server instance of " + url + " taking long response time");
 
         }
 
-        LOG.info("",Instant.now().toString(),url,output.getStatusCodeValue(),responseTime,"up",output.getBody());
+        LOG.info("",java.time.LocalDateTime.now(),url,output.getStatusCodeValue(),responseTime,"up",output.getBody());
 
 
 
@@ -124,7 +125,7 @@ public class MonitoringURIScheduler {
     }
 
     public void SchedulingMailingEvent(UriProperties uriproperties) {
-        LOG.debug("Inside SchedulingMailingEvent for uri ",Instant.now().toString(),"Inside SchedulingMailingEvent for uri",uriproperties.getUri());
+        LOG.debug("Inside SchedulingMailingEvent for uri ",java.time.LocalDateTime.now(),"Inside SchedulingMailingEvent for uri",uriproperties.getUri());
 
         ResponseEntity<String> output = null;
         String statusCode = null;
@@ -136,46 +137,55 @@ public class MonitoringURIScheduler {
             Data outputBody = g.fromJson(output.getBody(), Data.class);
 
             if (!(statusCode.equals(SUCCESS_CODE)) && !(outputBody.getData().getSuccess().equals(SUCCESS_MESSAGE))) {
-                LOG.error(uriproperties.getUri() ,Instant.now().toString(),uriproperties.getUri(),"","","server instance of server " + uriproperties.getUri() + "down");
+                LOG.error(uriproperties.getUri() ,java.time.LocalDateTime.now(),uriproperties.getUri(),"","","server instance of server " + uriproperties.getUri() + "down");
                 sendEmail("server " + uriproperties.getUri() + " down", "server instance of " + uriproperties.getUri() + " down");
-                LOG.debug("Mail sent for uri " , Instant.now().toString(),"Mail sent for uri " ,uriproperties.getUri());
+                LOG.debug("Mail sent for uri " , java.time.LocalDateTime.now(),"Mail sent for uri" ,uriproperties.getUri());
             }
             else{
                 if(uriproperties.getCounter()>0){
-                   LOG.info("Server is Up for server ",Instant.now().toString(),uriproperties.getUri(),"","","Server is Up for server" + uriproperties.getUri());
+                   LOG.info("Server is Up for server ",java.time.LocalDateTime.now(),uriproperties.getUri(),"","","Server is Up for server" + uriproperties.getUri());
                     sendEmail("server " + uriproperties.getUri() + " is up", "server instance of " + uriproperties.getUri() + " is up");
-                    LOG.info("Mail sent for server up for uri",Instant.now().toString(),"","Mail sent for server up for uri" + uriproperties.getUri());
+                    LOG.info("Mail sent for server up for uri",java.time.LocalDateTime.now(),"","Mail sent for server up for uri" + uriproperties.getUri());
                     uriproperties.setCounter(0);
                 }
             }
 
 
-        } catch (Exception e) {
-            LOG.debug("Inside catch of SchedulingMailingEvent",Instant.now().toString(),"Inside catch of SchedulingMailingEvent");
-
-            LOG.error(uriproperties.getUri(),Instant.now().toString(),uriproperties.getUri(),"","","down");
+        } catch ( HttpStatusCodeException e) {
+            LOG.debug("Inside catch of SchedulingMailingEvent",Instant.now().toString(),"Inside catch of SchedulingMailingEvent Http Exception");
+            LOG.error("",java.time.LocalDateTime.now(),uriproperties.getUri(),e.getStatusCode(),"","down");
              count = uriproperties.getCounter();
              count++;
             uriproperties.setCounter(count);
             if(uriproperties.getCounter()>0 && ((uriproperties.getCounter()<3 ) || (uriproperties.getCounter()%5==0))){
-               LOG.debug("Mail Sent condition satisfied ",Instant.now().toString(),"Mail Sent condition satisfied ");
+               LOG.debug("Mail Sent condition satisfied ",java.time.LocalDateTime.now(),"Mail Sent condition satisfied");
                 sendEmail("server " + uriproperties.getUri() + " down", "server instance of " + uriproperties.getUri() + " down");
             }
 
+        }catch(Exception e){
+            LOG.debug("Inside catch of SchedulingMailingEvent",Instant.now().toString(),"Inside catch of SchedulingMailingEvent Exception");
+            LOG.error("",java.time.LocalDateTime.now(),uriproperties.getUri(),"I/o Exception","down");
+            count = uriproperties.getCounter();
+            count++;
+            uriproperties.setCounter(count);
+            if(uriproperties.getCounter()>0 && ((uriproperties.getCounter()<3 ) || (uriproperties.getCounter()%5==0))){
+                LOG.debug("Mail Sent condition satisfied ",java.time.LocalDateTime.now(),"Mail Sent condition satisfied");
+                sendEmail("server " + uriproperties.getUri() + " down", "server instance of " + uriproperties.getUri() + " down");
+            }
         }
 
     }
 
     @Scheduled(fixedRateString = "${Timer.time}")
     public void SchedulingMailingEventOne() {
-        LOG.debug("Inside SchedulingMailingEventOne",Instant.now().toString(),"Inside SchedulingMailingEventOne");
+        LOG.debug("Inside SchedulingMailingEventOne",java.time.LocalDateTime.now(),"Inside SchedulingMailingEventOne");
         SchedulingMailingEvent(uriPropertiesOne);
 
     }
 
     @Scheduled(fixedRateString = "${Timer.time}")
     public void SchedulingMailingEventTwo() {
-        LOG.debug("Inside SchedulingMailingEventTwo",Instant.now().toString(),"Inside SchedulingMailingEventTwo");
+        LOG.debug("Inside SchedulingMailingEventTwo",java.time.LocalDateTime.now(),"Inside SchedulingMailingEventTwo");
 
         SchedulingMailingEvent(uriPropertiesTwo);
     }
@@ -183,7 +193,7 @@ public class MonitoringURIScheduler {
 
     @Scheduled(fixedRateString = "${Timer.time}")
     public void SchedulingMailingEventThree() {
-        LOG.debug("Inside SchedulingEventThree",Instant.now().toString(),"Inside SchedulingEventThree");
+        LOG.debug("Inside SchedulingEventThree",java.time.LocalDateTime.now(),"Inside SchedulingEventThree");
 
         SchedulingMailingEvent(uriPropertiesThree);
 
